@@ -1,6 +1,6 @@
 {
     "bottles": [{
-        "data": "/data/uk.csv",
+        "data": "data/uk.csv",
         "name": "uk",
         "colour": "red",
         "flag": "🇬🇧"
