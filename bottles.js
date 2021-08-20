@@ -162,7 +162,7 @@ let app = new Bottles();
 
 app.init().then(function() {
 
-    d3.json("/config.json").then(function(config) {
+    d3.json("config.json").then(function(config) {
 
         app.loadBottles(config.bottles).then(function() {
 
