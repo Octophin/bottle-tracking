@@ -4,7 +4,7 @@ Made for the Arribada Initiative by Octophin Digital
 
 To add new bottles edit the config.json file
 
-```json
+```js
 
 {
     "bottles": [{
