@@ -18,7 +18,7 @@ class Bottles {
             // Load bottle arrow image
 
             self.map.loadImage(
-                '/images/bottle.png',
+                'images/bottle.png',
                 (error, image) => {
 
                     if (error) throw error;
