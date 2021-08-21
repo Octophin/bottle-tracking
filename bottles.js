@@ -130,6 +130,8 @@ class Bottles {
             el.className = 'marker marker--' + name;
             el.innerHTML = flag;
 
+            twemoji.parse(el);
+
             // make a marker for each feature and add to the map
 
             let bottleMarker = new mapboxgl.Marker(el)
