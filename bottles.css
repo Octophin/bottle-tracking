@@ -30,7 +30,7 @@ body {
     height: 100px;
     position: absolute;
     right: 1em;
-    bottom: 1em;
+    bottom: 2em;
     border-radius: 50%;
     padding: 0.5em;
     background-image: url("images/play.svg");
