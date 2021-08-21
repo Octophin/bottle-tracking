@@ -173,7 +173,7 @@ class Bottles {
 
                 bottle.marker.setLngLat([parseFloat(bottle.coords[currentStep].lng), parseFloat(bottle.coords[currentStep].lat)]) // FLOAT!
 
-            }, 500)
+            }, 100)
 
             this.intervals.push(bottleInterval);
 
