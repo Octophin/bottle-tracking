@@ -8,7 +8,7 @@ class Bottles {
 
         self.map = new mapboxgl.Map({
             container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v11',
+            style: 'mapbox://styles/octophin/ckslje0pablu318rhq5u46k7k?fresh=true',
             center: [-5.494078, 50.079286],
             zoom: 7
         });
