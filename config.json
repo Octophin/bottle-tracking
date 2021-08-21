@@ -26,7 +26,7 @@
         {
             "data": "data/japan.csv",
             "name": "japan",
-            "colour": "blue",
+            "colour": "lightblue",
             "flag": "🇯🇵"
         },
         {
