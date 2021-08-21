@@ -105,7 +105,7 @@ class Bottles {
                 'source': name,
                 'paint': {
                     'line-color': colour,
-                    'line-width': 0.5,
+                    'line-width': 1,
                     'line-dasharray': [1, 1.5]
                 }
             });
@@ -134,27 +134,36 @@ class Bottles {
 
             // make a marker for each feature and add to the map
 
-            let bottleMarker = new mapboxgl.Marker(el)
-                .setLngLat([parseFloat(data[0].lng), parseFloat(data[0].lat)]) // FLOAT!
+            self.bottles[name].marker = new mapboxgl.Marker(el)
+                .setLngLat([parseFloat(data[data.length - 1].lng), parseFloat(data[data.length - 1].lat)]) // FLOAT!
                 .addTo(self.map);
+        })
+
+    }
+
+    play() {
+
+        for (let bottle in this.bottles) {
+
+            bottle = this.bottles[bottle];
 
             let currentStep = 0;
 
-            setInterval(function() {
+            let bottleInterval = setInterval(function() {
 
                 currentStep += 1;
 
-                if (currentStep >= data.length) {
+                if (currentStep >= bottle.coords.length) {
 
-                    currentStep = 0;
+                    clearInterval(bottleInterval);
 
                 }
 
-                bottleMarker.setLngLat([parseFloat(data[currentStep].lng), parseFloat(data[currentStep].lat)]) // FLOAT!
+                bottle.marker.setLngLat([parseFloat(bottle.coords[currentStep].lng), parseFloat(bottle.coords[currentStep].lat)]) // FLOAT!
 
             }, 500)
 
-        })
+        }
 
     }
 
@@ -168,7 +177,9 @@ app.init().then(function() {
 
         app.loadBottles(config.bottles).then(function() {
 
-            console.log(app.bottles);
+            // Data and map loaded
+
+            $("#play").show();
 
         });
 

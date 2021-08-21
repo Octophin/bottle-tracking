@@ -20,6 +20,21 @@ body {
     width: 30px;
     height: 30px;
     padding: 1em;
-    background-color: white;
+    background-color: darkblue;
     border-radius: 100%;
+}
+
+.play-button {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    padding: 0.5em;
+    background-image: url("images/play.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: none;
+    z-index: 2;
+    cursor: pointer;
 }

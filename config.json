@@ -1,8 +1,45 @@
 {
     "bottles": [{
-        "data": "data/uk.csv",
-        "name": "uk",
-        "colour": "red",
-        "flag": "🇬🇧"
-    }]
+            "data": "data/canada.csv",
+            "name": "canada",
+            "colour": "red",
+            "flag": "🇨🇦"
+        },
+        {
+            "data": "data/france.csv",
+            "name": "france",
+            "colour": "orange",
+            "flag": "🇫🇷"
+        },
+        {
+            "data": "data/germany.csv",
+            "name": "germany",
+            "colour": "yellow",
+            "flag": "🇩🇪"
+        },
+        {
+            "data": "data/italy.csv",
+            "name": "italy",
+            "colour": "green",
+            "flag": "🇮🇹"
+        },
+        {
+            "data": "data/japan.csv",
+            "name": "japan",
+            "colour": "blue",
+            "flag": "🇯🇵"
+        },
+        {
+            "data": "data/uk.csv",
+            "name": "uk",
+            "colour": "indigo",
+            "flag": "🇬🇧"
+        },
+        {
+            "data": "data/usa.csv",
+            "name": "usa",
+            "colour": "violet",
+            "flag": "🇺🇸"
+        }
+    ]
 }
