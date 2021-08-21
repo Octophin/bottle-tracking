@@ -25,16 +25,18 @@ body {
 }
 
 .play-button {
+    background-color: white;
     width: 100px;
     height: 100px;
     position: absolute;
     right: 1em;
     bottom: 1em;
+    border-radius: 50%;
     padding: 0.5em;
     background-image: url("images/play.svg");
     background-repeat: no-repeat;
     background-size: contain;
     display: none;
-    z-index: 2;
+    z-index: 3;
     cursor: pointer;
 }
