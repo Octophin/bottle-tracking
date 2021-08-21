@@ -4,6 +4,9 @@ class Bottles {
 
         let self = this;
 
+        // Storage for setIntervals so we can reset them
+        self.intervals = [];
+
         self.bottles = {};
 
         self.map = new mapboxgl.Map({
@@ -31,6 +34,12 @@ class Bottles {
                 });
 
         })
+
+    }
+
+    clearIntervals() {
+
+        this.intervals.forEach(clearInterval);
 
     }
 
@@ -143,6 +152,9 @@ class Bottles {
 
     play() {
 
+        // Reset any existing intervals
+        this.clearIntervals();
+
         for (let bottle in this.bottles) {
 
             bottle = this.bottles[bottle];
@@ -162,6 +174,8 @@ class Bottles {
                 bottle.marker.setLngLat([parseFloat(bottle.coords[currentStep].lng), parseFloat(bottle.coords[currentStep].lat)]) // FLOAT!
 
             }, 500)
+
+            this.intervals.push(bottleInterval);
 
         }
 
