@@ -45,3 +45,55 @@ body {
     z-index: 3;
     cursor: pointer;
 }
+
+.map-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+#map {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.side-panel {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30%;
+    height: 98.8vh;
+    background-color: grey;
+    border-style: solid;
+    border-color: darkslategrey;
+    border-width: 5px;
+    border-radius: 5px;
+    z-index: 1;
+    padding: 5px;
+}
+
+.map-change-btn {
+    position: relative;
+    display: inline-block;
+    margin: auto;
+    width: 49.8%;
+    height: 100%;
+    background-color: grey;
+    z-index: 1;
+    padding: 3px;
+    border-style: solid;
+    border-color: darkslategrey;
+    border-radius: 5px;
+}
+
+.button-container {
+    position: absolute;
+    left: 0;
+    padding-left: 1px;
+    top: 0;
+    width: 100%;
+    height: 4%;
+}

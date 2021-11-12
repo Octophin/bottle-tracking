@@ -16,6 +16,11 @@ class Bottles {
             zoom: 7
         });
 
+        self.loadedLayerNames = {
+            "currentMapLayers": [],
+            "oldMapLayers": []
+        }
+
         self.map.on("load", function() {
 
             // Load bottle arrow image
@@ -31,9 +36,12 @@ class Bottles {
 
                     self.ready = true;
 
-                });
+                }
+            );
 
-        })
+        });
+
+
 
     }
 
@@ -75,11 +83,17 @@ class Bottles {
         // bottles is an array of objects with:
         // {data: "data.csv", name: "uk", colour: "red"}
 
-        return Promise.all(bottles.map(x => this.loadBottleData(x.data, x.name, x.colour, x.flag)));
+        return Promise.all(bottles.map(x => this.loadBottleData(x.data, x.name, x.colour, x.flag, x.info, x.map)));
 
     }
 
-    loadBottleData(url, name, colour, flag) {
+    openPanel(info) {
+        document.getElementById("sidePanel").style.display = "block";
+        document.getElementById("bottle_info").innerHTML = info;
+        document.getElementById("buttonContainer").style.width = "68.3%"
+    }
+
+    loadBottleData(url, name, colour, flag, info, mapVersion) {
 
         let self = this;
 
@@ -108,19 +122,25 @@ class Bottles {
                 }
             });
 
+            let visibility = 'none'
+            if (mapVersion == "current") visibility = 'visible';
+
             self.map.addLayer({
-                'id': name + "_line",
+                'id': name + "_line_" + mapVersion,
                 'type': 'line',
                 'source': name,
                 'paint': {
                     'line-color': colour,
                     'line-width': 1,
                     'line-dasharray': [1, 1.5]
+                },
+                'layout': {
+                    "visibility": visibility
                 }
-            });
 
+            });
             self.map.addLayer({
-                'id': name + "_bottles",
+                'id': name + "_bottles_" + mapVersion,
                 'type': 'symbol',
                 'source': name,
                 'layout': {
@@ -130,14 +150,18 @@ class Bottles {
                     'icon-allow-overlap': false,
                     'icon-image': 'bottle',
                     'icon-size': 0.2,
+                    "visibility": visibility
                 }
             });
+
+            self.map.on("click", name + "_bottles", (e) => { self.openPanel(info) });
 
             // Make a marker for the bottle that moves about
 
             var el = document.createElement('div');
             el.className = 'marker marker--' + name;
             el.innerHTML = flag;
+            el.addEventListener("click", () => { self.openPanel(info) });
 
             twemoji.parse(el);
 
@@ -146,6 +170,11 @@ class Bottles {
             self.bottles[name].marker = new mapboxgl.Marker(el)
                 .setLngLat([parseFloat(data[data.length - 1].lng), parseFloat(data[data.length - 1].lat)]) // FLOAT!
                 .addTo(self.map);
+            if (mapVersion == "old") {
+                el.style.display = "none"
+                self.loadedLayerNames["oldMapLayers"].push(name)
+            } else self.loadedLayerNames["currentMapLayers"].push(name)
+
         })
 
     }
@@ -181,9 +210,50 @@ class Bottles {
 
     }
 
+    closePanel() {
+        document.getElementById("sidePanel").style.display = "none";
+        document.getElementById("buttonContainer").style.width = "100%"
+    }
+
+    changeMap(id) {
+        console.log(id)
+        let self = this;
+        let bottleSet;
+        let oldBottleSet;
+        if (id == "newMapBtn") {
+            bottleSet = self.loadedLayerNames["currentMapLayers"];
+            oldBottleSet = self.loadedLayerNames["oldMapLayers"]
+            old = "old"
+            current = "current"
+        }
+        if (id == "oldMapBtn") {
+            console.log("here");
+            console.log(self.loadedLayerNames)
+            bottleSet = self.loadedLayerNames["oldMapLayers"];
+            oldBottleSet = self.loadedLayerNames["currentMapLayers"];
+            old = "current",
+                current = "old"
+        }
+
+        for (let i = 0; i < oldBottleSet.length; i++) {
+            document.getElementsByClassName("marker--" + oldBottleSet[i])[0].style.display = "none"
+            self.map.setLayoutProperty(oldBottleSet[i] + "_bottles_" + old, 'visibility', 'none');
+            self.map.setLayoutProperty(oldBottleSet[i] + "_line_" + old, 'visibility', 'none');
+        }
+
+        for (let i = 0; i < bottleSet.length; i++) {
+            document.getElementsByClassName("marker--" + bottleSet[i])[0].style.display = "block"
+            self.map.setLayoutProperty(bottleSet[i] + "_bottles_" + current, 'visibility', 'visible');
+            self.map.setLayoutProperty(bottleSet[i] + "_line_" + current, 'visibility', 'visible');
+        }
+    }
+
+
+
 }
 
-let app = new Bottles();
+const app = new Bottles();
+window.app = app;
 
 app.init().then(function() {
 

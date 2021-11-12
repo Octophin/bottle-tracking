@@ -15,7 +15,18 @@
 
 <body>
     <div id="play" class="play-button" onclick="app.play()"></div>
-    <div id="map"></div>
+    <div id="mapContainer" class="map-container">
+        <div id="buttonContainer" class="button-container">
+            <button type="button" id="newMapBtn" class="map-change-btn" onclick="app.changeMap(this.id)">COP Map</button>
+            <button type="button" id="oldMapBtn" class="map-change-btn" onclick="app.changeMap(this.id)">Old Map</button>
+        </div>
+        <div id="sidePanel" class=side-panel>
+            <button type="button" id="closeBtn" class="close-btn" onclick="app.closePanel(this.id)">Close</button>
+            <p id="bottle_info" class="bottle-info"></p>
+        </div>
+        <div id="map"></div>
+    </div>
+
     <script>
         mapboxgl.accessToken = 'pk.eyJ1Ijoib2N0b3BoaW4iLCJhIjoiY2s1MmtzMnFwMDllYjNtcW43bzZmZnpyNyJ9.w6pj26TwKy5wqaCQN69sFg';
     </script>

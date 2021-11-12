@@ -3,43 +3,73 @@
             "data": "data/canada.csv",
             "name": "canada",
             "colour": "red",
-            "flag": "🇨🇦"
+            "flag": "🇨🇦",
+            "info": "This is Canada",
+            "map": "old"
         },
         {
             "data": "data/france.csv",
             "name": "france",
             "colour": "orange",
-            "flag": "🇫🇷"
+            "flag": "🇫🇷",
+            "info": "This is France",
+            "map": "old"
         },
         {
             "data": "data/germany.csv",
             "name": "germany",
             "colour": "yellow",
-            "flag": "🇩🇪"
+            "flag": "🇩🇪",
+            "info": "This is Germany",
+            "map": "old"
         },
         {
             "data": "data/italy.csv",
             "name": "italy",
             "colour": "green",
-            "flag": "🇮🇹"
+            "flag": "🇮🇹",
+            "info": "This is Italy",
+            "map": "old"
         },
         {
             "data": "data/japan.csv",
             "name": "japan",
             "colour": "lightblue",
-            "flag": "🇯🇵"
+            "flag": "🇯🇵",
+            "info": "This is Japan",
+            "map": "old"
         },
         {
             "data": "data/uk.csv",
             "name": "uk",
             "colour": "indigo",
-            "flag": "🇬🇧"
+            "flag": "🇬🇧",
+            "info": "This is Britain",
+            "map": "old"
         },
         {
             "data": "data/usa.csv",
             "name": "usa",
             "colour": "violet",
-            "flag": "🇺🇸"
+            "flag": "🇺🇸",
+            "info": "This is America",
+            "map": "old"
+        },
+        {
+            "data": "data/france.csv",
+            "name": "Gay",
+            "colour": "red",
+            "flag": "🏳️‍🌈",
+            "info": "Gay Rights",
+            "map": "current"
+        },
+        {
+            "data": "data/germany.csv",
+            "name": "pirate",
+            "colour": "orange",
+            "flag": "🏴‍☠️",
+            "info": "Yo ho Yo ho I am a pirate",
+            "map": "current"
         }
     ]
 }
